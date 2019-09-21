@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vicious Mockery</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .type-btn {
+        width: 100%;
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bardic Insult Generator</h1>
+      <hr />
+      <div id="type-options">
+        <div class="row">
+          <div class="col-md-3">
+            <button type="button" class="type-btn btn btn-outline-primary btn-large" data-type="0">
+              Any
+            </button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="type-btn btn btn-outline-primary btn-large" data-type="1">
+              Insults about Looks
+            </button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="type-btn btn btn-outline-primary btn-large" data-type="2">
+              Insults about how gross they are
+            </button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="type-btn btn btn-outline-primary btn-large" data-type="3">
+              Insults about incompetence
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <button type="button" class="type-btn  btn btn-outline-primary btn-large" data-type="4">
+              Insults about Smell
+            </button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="type-btn btn btn-outline-primary btn-large" data-type="5">
+              Meta Insults
+            </button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="type-btn btn btn-outline-primary btn-large" data-type="6">
+              General Insults
+            </button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="type-btn btn btn-outline-primary btn-large" data-type="7">
+              Insults about them losing/going to die
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <button type="button" class="type-btn btn btn-outline-primary btn-large" data-type="8">
+              Insults about dumb they are
+            </button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="type-btn btn btn-outline-primary btn-large" data-type="9">
+              Insults about Lame/Insignificant They Are
+            </button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="type-btn btn btn-outline-primary btn-large" data-type="10">
+              General Insults
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <p id="displayer" class="text-center font-weight-bold my-5" style="font-size: 4vh;"></p>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
