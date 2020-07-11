@@ -265,22 +265,27 @@
   function generateWatchData(prev) {
     const res = {
       region: prev.region,
-      season: prev.region,
+      season: prev.season,
     };
 
     res.watch = presetData.watch[prev.watch.id % presetData.watch.length];
-    let windSum = 0,
-      skiesSum = 0;
-    prev.wind.probs = prev.wind.probs.map((x) => {
-      x.value = x.value / (prev.region.windMult * prev.season.windMult);
-      windSum += x.value;
-      return x;
-    });
-    prev.skies.probs = prev.skies.probs.map((x) => {
-      x.value = x.value / (prev.region.rainMult * prev.season.rainMult);
-      skiesSum += x.value;
-      return x;
-    });
+
+    prev.wind.probs[0].value =
+      prev.wind.probs[0].value / (prev.region.windMult * prev.season.windMult);
+    prev.wind.probs[1].value =
+      prev.wind.probs[1].value * (prev.region.windMult * prev.season.windMult);
+    prev.wind.probs[2].value =
+      prev.wind.probs[2].value * (prev.region.windMult * prev.season.windMult);
+
+    prev.skies.probs[0].value =
+      prev.skies.probs[0].value / (prev.region.rainMult * prev.season.rainMult);
+    prev.skies.probs[1].value =
+      prev.skies.probs[1].value * (prev.region.rainMult * prev.season.rainMult);
+    prev.skies.probs[2].value =
+      prev.skies.probs[2].value * (prev.region.rainMult * prev.season.rainMult);
+
+    let windSum = prev.wind.probs[0].value + prev.wind.probs[1].value + prev.wind.probs[2].value,
+      skiesSum = prev.skies.probs[0].value + prev.skies.probs[1].value + prev.skies.probs[2].value;
 
     const windRand = Math.random() * windSum,
       skiesRand = Math.random() * skiesSum;
@@ -369,8 +374,6 @@
   }
 
   function generateData() {
-    console.log(123);
-
     data = [];
     const totalDays = 5 * 6 - state.watch;
     for (let i = 0; i < totalDays; i++) {
