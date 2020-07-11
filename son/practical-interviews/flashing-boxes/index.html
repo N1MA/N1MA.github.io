@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Flashing Lights</title>
+        <style>
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+.circle-container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    margin: 0 12px;
+    border: 1px solid #eee;
+    border-radius: 100%;
+    background-color: #000;
+}
+
+.circle-yellow {
+    background-color: #ff0;
+}
+        </style>        
+    </head>
+
+    <body>
+        <div class="circle-container">
+            <div data-id="0" class="circle"></div>
+            <div data-id="1" class="circle"></div> 
+            <div data-id="2" class="circle"></div>
+            <div data-id="3" class="circle"></div>
+        </div>
+
+        <script>
+            var ON_TIME_MS = 1000;
+            var timer;
+            circles = document.querySelector('.circle-container');
+            numCircles = document.querySelectorAll('.circle').length;
+            circles.addEventListener('click', function(e) {
+                if(timer) {
+                    return;
+                }
+                var circle = e.target;
+                run(circle.dataset.id);
+            });
+
+            function run(startId, count = 1) {
+                if(count > numCircles) {
+                    timer = null;
+                    return;
+                }
+                console.log(startId, numCircles, count);
+                startId = startId % numCircles;
+                console.log(startId);
+                var c = document.querySelector('.circle[data-id="' + startId  + '"]');
+                c.classList.add('circle-yellow');
+                timer = setTimeout(function() {
+                    c.classList.remove('circle-yellow');
+                    run(startId + 1, count + 1);
+                }, ON_TIME_MS);
+            }
+
+        </script>
+    </body>
+</html>
